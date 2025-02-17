@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Safety</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic styling for the modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none; /* Added to remove underline */
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Center the nav items */
+        }
+
+        nav ul li {
+            position: relative; /* For absolute positioning of the indicator */
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and transform transition */
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00; /* Change text color on hover */
+            transform: scale(1.1); /* Slightly enlarge the text on hover */
+        }
+
+        /* Indicator for active link */
+        .indicator {
+            position: absolute;
+            bottom: 0; /* Position it at the bottom of the li */
+            left: 50%; /* Center it horizontally */
+            width: 0; /* Start with zero width */
+            height: 3px; /* Height of the indicator */
+            background-color: #ffcc00; /* Color of the indicator */
+            transform: translateX(-50%); /* Center it based on its width */
+            transition: width 0.3s ease; /* Smooth width transition for the indicator */
+        }
+
+        /* Move the indicator under the active link */
+        nav ul li:hover .indicator {
+            width: 100%; /* Full width when hovered */
+        }
+
+        /* Basic styling for the rest of the content */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a><div class="indicator"></div></li>
+            <li><a href="#resources">Resources</a><div class="indicator"></div></li>
+            <li><a href="#safety-tips">Safety Tips</a><div class="indicator"></div></li>
+            <li><a href="#emergency-contacts">Emergency Contacts</a><div class="indicator"></div></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="resources">
+            <h2>Safety Resources</h2>
+            <p>Find essential resources for women's safety.</p>
+            <a href="http://ncw.nic.in/helplines" target="_blank" class="animated-button">NCW Helplines</a>
+            <button class="animated-button" onclick="alert('Resource 1 - Link to a local women\'s shelter')">Local Women's Shelter</button>
+            <button class="animated-button" onclick="alert('Resource 2 - Link to a self-defense class')">Self-Defense Classes</button>
+        </section>
+
+        <section id="safety-tips">
+            <h2>Safety Tips</h2>
+            <p>Here are some useful safety tips:</p>
+            <ul>
+                <li>Always be aware of your surroundings.</li>
+                <li>Trust your instincts.</li>
+                <li>Have a plan in case of emergency.</li>
+                <li>Avoid walking alone at night in poorly lit areas.</li>
+                <li>Share your location with a trusted contact when traveling alone.</li>
+                <li>Learn basic self-defense techniques.</li>
+            </ul>
+        </section>
+
+        <section id="emergency-contacts">
+            <h2>Emergency Contacts</h2>
+            <p>Save these important numbers:</p>
+
+            <!-- Buttons to show emergency contact numbers -->
+            <button class="animated-button" onclick="showContact('Police', '100')">Police</button>
+            <button class="animated-button" onclick="showContact('Fire Department', '101')">Fire Department</button>
+            <button class="animated-button" onclick="showContact('Women\'s Helpline', '1091')">Women's Helpline</button>
+
+        </section>
+
+        <!-- Modal for displaying contact numbers -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p id="contact-info"></p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Women's Safety Initiative</p>
+    </footer>
+
+    <!-- JavaScript to handle modal functionality -->
+    <script src="script.js"></script>
+    <script>
+        function showContact(name, number) {
+            document.getElementById("contact-info").innerText = name + ": " + number;
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        // script.js
+
+// Function to show the modal with contact information
+function showContact(name, number) {
+    document.getElementById("contact-info").innerText = name + ": " + number;
+    document.getElementById("myModal").style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Function to handle animated button clicks
+document.querySelectorAll('.animated-button').forEach(button => {
+    button.addEventListener('click', function() {
+        this.classList.add('clicked');
+        setTimeout(() => {
+            this.classList.remove('clicked');
+        }, 300); // Remove class after animation duration
+    });
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('nav ul li a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+});
+
+    </script>
+
+</body>
+</html>

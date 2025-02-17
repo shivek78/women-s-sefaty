@@ -1,0 +1,116 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("HI.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  color: white;
+}
+
+header {
+  background-color: rgba(148, 131, 76, 0.842); 
+ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left h1 {
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.site-name {
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0; /* Reset default padding */
+  margin: 0;  /* Reset default margin */
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+nav a:hover {
+  color: #bbb; /* Lighter color on hover */
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+.resource-buttons,
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.animated-button {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+}
+
+.animated-button:hover {
+  transform: scale(1.1);
+  background-color: #5a52e6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Added shadow on hover */
+}
+
+.login-button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+  margin-right: 10px;
+}
+
+.login-button:hover {
+  transform: scale(1.1);
+  background-color: #4cae4c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Added shadow on hover */
+}
+
+
+
+
+#articles article {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+}
+
+#articles article h3 a {
+  color: #6c63ff;
+  text-decoration: none;
+}
+
