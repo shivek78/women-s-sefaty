@@ -3,233 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Women's Safety</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Basic styling for the modal */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            text-decoration: none; /* Added to remove underline */
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-        }
-
-        /* Navigation Bar Styling */
-        nav {
-            background-color: #333;
-            overflow: hidden;
-            position: relative;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center; /* Center the nav items */
-        }
-
-        nav ul li {
-            position: relative; /* For absolute positioning of the indicator */
-        }
-
-        nav ul li a {
-            display: block;
-            padding: 15px 20px;
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and transform transition */
-        }
-
-        nav ul li a:hover {
-            color: #ffcc00; /* Change text color on hover */
-            transform: scale(1.1); /* Slightly enlarge the text on hover */
-        }
-
-        /* Indicator for active link */
-        .indicator {
-            position: absolute;
-            bottom: 0; /* Position it at the bottom of the li */
-            left: 50%; /* Center it horizontally */
-            width: 0; /* Start with zero width */
-            height: 3px; /* Height of the indicator */
-            background-color: #ffcc00; /* Color of the indicator */
-            transform: translateX(-50%); /* Center it based on its width */
-            transition: width 0.3s ease; /* Smooth width transition for the indicator */
-        }
-
-        /* Move the indicator under the active link */
-        nav ul li:hover .indicator {
-            width: 100%; /* Full width when hovered */
-        }
-
-        /* Basic styling for the rest of the content */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        section {
-            margin-bottom: 30px;
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a><div class="indicator"></div></li>
-            <li><a href="#resources">Resources</a><div class="indicator"></div></li>
-            <li><a href="#safety-tips">Safety Tips</a><div class="indicator"></div></li>
-            <li><a href="#emergency-contacts">Emergency Contacts</a><div class="indicator"></div></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="resources">
-            <h2>Safety Resources</h2>
-            <p>Find essential resources for women's safety.</p>
-            <a href="http://ncw.nic.in/helplines" target="_blank" class="animated-button">NCW Helplines</a>
-            <button class="animated-button" onclick="alert('Resource 1 - Link to a local women\'s shelter')">Local Women's Shelter</button>
-            <button class="animated-button" onclick="alert('Resource 2 - Link to a self-defense class')">Self-Defense Classes</button>
-        </section>
-
-        <section id="safety-tips">
-            <h2>Safety Tips</h2>
-            <p>Here are some useful safety tips:</p>
-            <ul>
-                <li>Always be aware of your surroundings.</li>
-                <li>Trust your instincts.</li>
-                <li>Have a plan in case of emergency.</li>
-                <li>Avoid walking alone at night in poorly lit areas.</li>
-                <li>Share your location with a trusted contact when traveling alone.</li>
-                <li>Learn basic self-defense techniques.</li>
-            </ul>
-        </section>
-
-        <section id="emergency-contacts">
-            <h2>Emergency Contacts</h2>
-            <p>Save these important numbers:</p>
-
-            <!-- Buttons to show emergency contact numbers -->
-            <button class="animated-button" onclick="showContact('Police', '100')">Police</button>
-            <button class="animated-button" onclick="showContact('Fire Department', '101')">Fire Department</button>
-            <button class="animated-button" onclick="showContact('Women\'s Helpline', '1091')">Women's Helpline</button>
-
-        </section>
-
-        <!-- Modal for displaying contact numbers -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <p id="contact-info"></p>
-            </div>
-        </div>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Women's Safety Initiative</p>
-    </footer>
-
-    <!-- JavaScript to handle modal functionality -->
-    <script src="script.js"></script>
+    <title>Women's Safety Initiative</title>
+   <link rel="stylesheet" href="style.css">
     <script>
-        function showContact(name, number) {
-            document.getElementById("contact-info").innerText = name + ": " + number;
-            document.getElementById("myModal").style.display = "block";
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function makeCall(number) {
+            window.open(`tel:${number}`, '_self');
+        }
+
+        function showResourceModal(title, content) {
+            document.getElementById('modal-body').innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+            document.getElementById('modal').style.display = 'block';
         }
 
         function closeModal() {
-            document.getElementById("myModal").style.display = "none";
+            document.getElementById('modal').style.display = 'none';
         }
 
-        // Close the modal when clicking outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        function showArticle(title) {
+            alert(`You clicked on: ${title}`);
         }
-        // script.js
-
-// Function to show the modal with contact information
-function showContact(name, number) {
-    document.getElementById("contact-info").innerText = name + ": " + number;
-    document.getElementById("myModal").style.display = "block";
-}
-
-// Function to close the modal
-function closeModal() {
-    document.getElementById("myModal").style.display = "none";
-}
-
-// Close the modal when clicking outside of it
-window.onclick = function(event) {
-    const modal = document.getElementById("myModal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-// Function to handle animated button clicks
-document.querySelectorAll('.animated-button').forEach(button => {
-    button.addEventListener('click', function() {
-        this.classList.add('clicked');
-        setTimeout(() => {
-            this.classList.remove('clicked');
-        }, 300); // Remove class after animation duration
-    });
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    });
-});
-
     </script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>SafeGuard</h1>
+                <div class="tagline">Women's Safety Initiative</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#safety-tips">Safety Tips</a></li>
+                    <li><a href="#emergency">Emergency</a></li>
+                    <li><a href="#articles">Learn</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button" onclick="window.open('tel:112', '_self')">🚨 Emergency Call</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <h1>Your Safety, Our Priority</h1>
+            <p>Comprehensive resources, support, and guidance to help you stay safe and empowered in every situation.</p>
+            <button class="hero-cta" onclick="scrollToSection('emergency')">Get Emergency Help</button>
+        </section>
+
+        <div class="emergency-banner">
+            <h3>🚨 National Emergency Helpline</h3>
+            <div class="emergency-number">112</div>
+            <p>Available 24/7 • Free from all networks • Multilingual support</p>
+        </div>
+
+        <section class="section" id="resources">
+            <h2>Essential Resources</h2>
+            <p class="section-description">Access verified support services, helplines, and organizations dedicated to women's safety and empowerment.</p>
+
+            <div class="button-grid">
+                <a href="https://ncw.nic.in/helplines" target="_blank" class="action-button primary">
+                    🏛️ National Commission for Women
+                </a>
+                <a href="https://www.womenhelpline.in/" target="_blank" class="action-button">
+                    📞 Women Helpline Directory
+                </a>
+                <a href="https://wcd.nic.in/schemes/pradhan-mantri-matru-vandana-yojana" target="_blank" class="action-button">
+                    🏥 Government Support Schemes
+                </a>
+                <a href="https://www.indiacode.nic.in/handle/123456789/2403" target="_blank" class="action-button">
+                    ⚖️ Legal Rights & Laws
+                </a>
+                <button class="action-button" onclick="showResourceModal('Local Support Centers', 'Find nearby women support centers, shelters, and crisis intervention services in your area.')">
+                    🏠 Local Support Centers
+                </button>
+                <button class="action-button" onclick="showResourceModal('Self Defense Training', 'Connect with certified self-defense instructors and martial arts training centers near you.')">
+                    🥋 Self Defense Training
+                </button>
+            </div>
+        </section>
+
+        <section class="section" id="safety-tips">
+            <h2>Safety Guidelines</h2>
+            <p class="section-description">Practical safety tips and awareness strategies to help you stay protected in various situations.</p>
+
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">👁️</div>
+                    <h3>Stay Alert & Aware</h3>
+                    <p>Always be conscious of your surroundings. Trust your instincts if something feels wrong.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h3>Share Your Location</h3>
+                    <p>Use location sharing with trusted contacts when traveling alone or in unfamiliar areas.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🚶‍♀️</div>
+                    <h3>Safe Travel Practices</h3>
+                    <p>Use well-lit routes, avoid isolated areas at night, and keep emergency contacts accessible.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🔒</div>
+                    <h3>Digital Safety</h3>
+                    <p>Protect your online presence with strong passwords and privacy settings on social media.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🏠</div>
+                    <h3>Home Security</h3>
+                    <p>Secure your home with proper locks, lighting, and avoid letting strangers know you're alone.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🤝</div>
+                    <h3>Build Support Networks</h3>
+                    <p>Maintain connections with family, friends, and community support groups.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="emergency">
+            <h2>Emergency Contacts</h2>
+            <p class="section-description">Important emergency numbers you should have saved in your phone. Click to call directly.</p>
+
+            <div class="contact-grid">
+                <div class="contact-card" onclick="makeCall('112')">
+                    <div class="contact-icon">🚨</div>
+                    <div class="contact-name">Emergency Services</div>
+                    <div class="contact-number">112</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('100')">
+                    <div class="contact-icon">👮‍♀️</div>
+                    <div class="contact-name">Police</div>
+                    <div class="contact-number">100</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('1091')">
+                    <div class="contact-icon">🆘</div>
+                    <div class="contact-name">Women's Helpline</div>
+                    <div class="contact-number">1091</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('108')">
+                    <div class="contact-icon">🚑</div>
+                    <div class="contact-name">Ambulance</div>
+                    <div class="contact-number">108</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('7827170170')">
+                    <div class="contact-icon">🏛️</div>
+                    <div class="contact-name">NCW Helpline</div>
+                    <div class="contact-number">7827170170</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('1098')">
+                    <div class="contact-icon">👶</div>
+                    <div class="contact-name">Child Helpline</div>
+                    <div class="contact-number">1098</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="articles">
+            <h2>Safety Education</h2>
+            <p class="section-description">Learn from expert resources and stay informed about safety practices and legal rights.</p>
+
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-header">
+                        <h3>🏢 Workplace Safety</h3>
+                    </div>
+                    <div class="article-content">
+                        <p>Understanding your rights at work, recognizing harassment, and creating safe professional environments.</p>
+                        <button class="action-button" onclick="showArticle('Workplace Safety')">Read More</button>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-header">
+                        <h3>🌐 Digital Privacy</h3>
+                    </div>
+                    <div class="article-content">
+                        <p>Protecting yourself online, cybersecurity tips, and maintaining privacy on social platforms.</p>
+                        <button class="action-button" onclick="showArticle('Digital Privacy')">Read More</button>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-header">
+                        <h3>🚗 Travel Safety</h3>
+                    </div>
+                    <div class="article-content">
+                        <p>Safe travel practices, public transport security, and staying protected while away from home.</p>
+                        <button class="action-button" onclick="showArticle('Travel Safety')">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SafeGuard - Women's Safety Initiative</p>
+        <p>Empowering women through safety awareness and community support</p>
+        <p>🌟 Remember: You are stronger than you think, and help is always available 🌟</p>
+    </footer>
+<script src="scripts.js"></script>
+
+
 
 </body>
 </html>

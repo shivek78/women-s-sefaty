@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Safety Initiative</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Professional Color Palette - Trust & Safety Theme */
+            --primary-navy: #1e3a8a;
+            --primary-blue: #3b82f6;
+            --accent-teal: #0d9488;
+            --accent-emerald: #059669;
+            --warning-amber: #f59e0b;
+            --danger-red: #dc2626;
+            --neutral-white: #ffffff;
+            --neutral-light: #f8fafc;
+            --neutral-gray: #64748b;
+            --neutral-dark: #1e293b;
+            --gradient-primary: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-emerald) 100%);
+            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--neutral-light);
+            color: var(--neutral-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--gradient-primary);
+            box-shadow: var(--shadow-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo h1 {
+            color: var(--neutral-white);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo .tagline {
+            color: var(--accent-teal);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--neutral-white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .cta-button {
+            background: var(--gradient-accent);
+            color: var(--neutral-white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            text-align: center;
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-large);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-cta {
+            background: var(--warning-amber);
+            color: var(--neutral-white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-cta:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Emergency Alert */
+        .emergency-banner {
+            background: var(--danger-red);
+            color: var(--neutral-white);
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-medium);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        .emergency-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        /* Section Styling */
+        .section {
+            background: var(--neutral-white);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-medium);
+            border-left: 4px solid var(--accent-teal);
+        }
+
+        .section h2 {
+            color: var(--primary-navy);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--neutral-gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Button Grid */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-button {
+            background: var(--neutral-white);
+            border: 2px solid var(--accent-teal);
+            color: var(--accent-teal);
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .action-button:hover {
+            background: var(--accent-teal);
+            color: var(--neutral-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .action-button.primary {
+            background: var(--gradient-accent);
+            color: var(--neutral-white);
+            border: none;
+        }
+
+        .action-button.primary:hover {
+            background: var(--accent-emerald);
+            transform: translateY(-2px);
+        }
+
+        .action-button.danger {
+            background: var(--danger-red);
+            color: var(--neutral-white);
+            border: 2px solid var(--danger-red);
+        }
+
+        .action-button.danger:hover {
+            background: #b91c1c;
+            border-color: #b91c1c;
+        }
+
+        /* Safety Tips */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tip-card {
+            background: var(--neutral-light);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--warning-amber);
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .tip-card .tip-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tip-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Cards */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .contact-card .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card .contact-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card .contact-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--warning-amber);
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .article-card {
+            background: var(--neutral-white);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .article-header {
+            background: var(--gradient-accent);
+            color: var(--neutral-white);
+            padding: 1rem;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--neutral-white);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow-large);
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--neutral-gray);
+            color: var(--neutral-white);
+            border: none;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .modal-close:hover {
+            background: var(--danger-red);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-navy);
+            color: var(--neutral-white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .button-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>SafeGuard</h1>
+                <div class="tagline">Women's Safety Initiative</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#safety-tips">Safety Tips</a></li>
+                    <li><a href="#emergency">Emergency</a></li>
+                    <li><a href="#articles">Learn</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button" onclick="window.open('tel:112', '_self')">🚨 Emergency Call</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <h1>Your Safety, Our Priority</h1>
+            <p>Comprehensive resources, support, and guidance to help you stay safe and empowered in every situation.</p>
+            <button class="hero-cta" onclick="scrollToSection('emergency')">Get Emergency Help</button>
+        </section>
+
+        <div class="emergency-banner">
+            <h3>🚨 National Emergency Helpline</h3>
+            <div class="emergency-number">112</div>
+            <p>Available 24/7 • Free from all networks • Multilingual support</p>
+        </div>
+
+        <section class="section" id="resources">
+            <h2>Essential Resources</h2>
+            <p class="section-description">Access verified support services, helplines, and organizations dedicated to women's safety and empowerment.</p>
+
+            <div class="button-grid">
+                <a href="https://ncw.nic.in/helplines" target="_blank" class="action-button primary">
+                    🏛️ National Commission for Women
+                </a>
+                <a href="https://www.womenhelpline.in/" target="_blank" class="action-button">
+                    📞 Women Helpline Directory
+                </a>
+                <a href="https://wcd.nic.in/schemes/pradhan-mantri-matru-vandana-yojana" target="_blank" class="action-button">
+                    🏥 Government Support Schemes
+                </a>
+                <a href="https://www.indiacode.nic.in/handle/123456789/2403" target="_blank" class="action-button">
+                    ⚖️ Legal Rights & Laws
+                </a>
+                <button class="action-button" onclick="showResourceModal('Local Support Centers', 'Find nearby women support centers, shelters, and crisis intervention services in your area.')">
+                    🏠 Local Support Centers
+                </button>
+                <button class="action-button" onclick="showResourceModal('Self Defense Training', 'Connect with certified self-defense instructors and martial arts training centers near you.')">
+                    🥋 Self Defense Training
+                </button>
+            </div>
+        </section>
+
+        <section class="section" id="safety-tips">
+            <h2>Safety Guidelines</h2>
+            <p class="section-description">Practical safety tips and awareness strategies to help you stay protected in various situations.</p>
+
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">👁️</div>
+                    <h3>Stay Alert & Aware</h3>
+                    <p>Always be conscious of your surroundings. Trust your instincts if something feels wrong.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h3>Share Your Location</h3>
+                    <p>Use location sharing with trusted contacts when traveling alone or in unfamiliar areas.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🚶‍♀️</div>
+                    <h3>Safe Travel Practices</h3>
+                    <p>Use well-lit routes, avoid isolated areas at night, and keep emergency contacts accessible.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🔒</div>
+                    <h3>Digital Safety</h3>
+                    <p>Protect your online presence with strong passwords and privacy settings on social media.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🏠</div>
+                    <h3>Home Security</h3>
+                    <p>Secure your home with proper locks, lighting, and avoid letting strangers know you're alone.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🤝</div>
+                    <h3>Build Support Networks</h3>
+                    <p>Maintain connections with family, friends, and community support groups.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="emergency">
+            <h2>Emergency Contacts</h2>
+            <p class="section-description">Important emergency numbers you should have saved in your phone. Click to call directly.</p>
+
+            <div class="contact-grid">
+                <div class="contact-card" onclick="makeCall('112')">
+                    <div class="contact-icon">🚨</div>
+                    <div class="contact-name">Emergency Services</div>
+                    <div class="contact-number">112</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('100')">
+                    <div class="contact-icon">👮‍♀️</div>
+                    <div class="contact-name">Police</div>
+                    <div class="contact-number">100</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('1091')">
+                    <div class="contact-icon">🆘</div>
+                    <div class="contact-name">Women's Helpline</div>
+                    <div class="contact-number">1091</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('108')">
+                    <div class="contact-icon">🚑</div>
+                    <div class="contact-name">Ambulance</div>
+                    <div class="contact-number">108</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('7827170170')">
+                    <div class="contact-icon">🏛️</div>
+                    <div class="contact-name">NCW Helpline</div>
+                    <div class="contact-number">7827170170</div>
+                </div>
+                <div class="contact-card" onclick="makeCall('1098')">
+                    <div class="contact-icon">👶</div>
+                    <div class="contact-name">Child Helpline</div>
+                    <div class="contact-number">1098</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="articles">
+            <h2>Safety Education</h2>
+            <p class="section-description">Learn from expert resources and stay informed about safety practices and legal rights.</p>
+
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-header">
+                        <h3>🏢 Workplace Safety</h3>
+                    </div>
+                    <div class="article-content">
+                        <p>Understanding your rights at work, recognizing harassment, and creating safe professional environments.</p>
+                        <button class="action-button" onclick="showArticle('Workplace Safety')">Read More</button>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-header">
+                        <h3>🌐 Digital Privacy</h3>
+                    </div>
+                    <div class="article-content">
+                        <p>Protecting yourself online, cybersecurity tips, and maintaining privacy on social platforms.</p>
+                        <button class="action-button" onclick="showArticle('Digital Privacy')">Read More</button>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-header">
+                        <h3>🚗 Travel Safety</h3>
+                    </div>
+                    <div class="article-content">
+                        <p>Safe travel practices, public transport security, and staying protected while away from home.</p>
+                        <button class="action-button" onclick="showArticle('Travel Safety')">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SafeGuard - Women's Safety Initiative</p>
+        <p>Empowering women through safety awareness and community support</p>
+        <p>🌟 Remember: You are stronger than you think, and help is always available 🌟</p>
+    </footer>
+
+    <script>
+        // Direct calling functionality
+        function makeCall(number) {
+            if (confirm(`Call ${number}?`)) {
+                window.open(`tel:${number}`, '_self');
+            }
+        }
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Modal functions
+        function showResourceModal(title, description) {
+            document.getElementById('modal-body').innerHTML = `
+                <h2 style="color: var(--primary-navy); margin-bottom: 1rem;">${title}</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--neutral-gray);">${description}</p>
+                <div style="text-align: center;">
+                    <button class="action-button primary" onclick="alert('Connecting you to local services...')">Find Services</button>
+                </div>
+            `;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function showArticle(title) {
+            const articles = {
+                'Workplace Safety': 'Learn about your legal rights in the workplace, how to report harassment, create safe environments, and access support resources for professional situations.',
+                'Digital Privacy': 'Protect your online presence with strong security practices, privacy settings, safe social media usage, and awareness of digital threats.',
+                'Travel Safety': 'Essential tips for safe travel including transportation security, accommodation safety, emergency preparedness, and staying connected while away.'
+            };
+
+            document.getElementById('modal-body').innerHTML = `
+                <h2 style="color: var(--primary-navy); margin-bottom: 1rem;">${title}</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--neutral-gray);">${articles[title]}</p>
+                <div style="text-align: center;">
+                    <button class="action-button primary" onclick="window.open('https://ncw.nic.in/important-links/safety-tips', '_blank')">View Full Guide</button>
+                </div>
+            `;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Navigation functionality
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Copy contact number to clipboard
+        function copyNumber(number) {
+            navigator.clipboard.writeText(number).then(() => {
+                alert(`Number ${number} copied to clipboard!`);
+            });
+        }
+    </script>
+</body>
+</html>
